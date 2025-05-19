@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Views.ChatPage">
+    <Grid RowDefinitions="auto,auto,*,50"
+          ColumnDefinitions="*"
+          Margin="10">
+        <Grid x:Name="MinInfoField"
+              Grid.Row="0"
+              ColumnDefinitions="70,*"
+              RowDefinitions="auto,10">
+            
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer
+                    Tapped="OnMinInfoFieldTapped"
+                    NumberOfTapsRequired="1"/>
+            </Grid.GestureRecognizers>
+            
+            <Image Source="{Binding ImageSource}"
+                   Grid.Row="0"
+                   MaximumHeightRequest="100"
+                   Aspect="AspectFit"/>
+
+            <Label Text="{Binding Name}" 
+                   FontSize="24" 
+                   VerticalOptions="Center"
+                   FontAttributes="Bold"
+                   Margin="10,0,0,0"
+                   TextColor="#92D36E"
+                   Grid.Row="0"
+                   Grid.Column="1"/>
+
+            <BoxView Grid.Row="1"
+                     Grid.ColumnSpan="2"
+                     HeightRequest="1"
+                     Color="#92D36E"/>
+        </Grid>
+        <Grid x:Name="ForPayFieldUser"
+              Grid.Row="1"
+              ColumnDefinitions="auto,*,auto"
+              RowDefinitions="auto,10"
+              IsVisible="False">
+
+            <Label Text="Цена (руб): "
+                   TextColor="#92D36E"
+                   FontSize="18"
+                   Grid.Column="0"
+                   Grid.Row="0"/>
+            
+            <Label Text="{Binding Price}"
+                   TextColor="#92D36E"
+                   FontSize="18"
+                   Grid.Column="1"
+                   Grid.Row="0"/>
+            
+            <Button Text="Оплатить" 
+                    BackgroundColor="#92D36E"
+                    Grid.Column="2"
+                    Grid.Row="0"
+                    Clicked = "PayOrder"/>
+
+            <BoxView Grid.ColumnSpan="3"
+                     HeightRequest="1"
+                     Grid.Row="1"
+                     Color="#92D36E"/>
+        </Grid>
+        <Grid x:Name="ForPayFieldMaster"
+              Grid.Row="1"
+              ColumnDefinitions="auto,*,auto"
+              RowDefinitions="auto,10"
+              IsVisible="False">
+
+            <Label Text="Цена (руб): "
+                   TextColor="#92D36E"
+                   FontSize="18"
+                   Grid.Row="0"
+                   Grid.Column="0"/>
+
+            <Entry Text="{Binding Price}"
+                   x:Name="PriceEntry"
+                   TextColor="#92D36E"
+                   FontSize="18"
+                   Grid.Column="1"
+                   Grid.Row="0"
+                   Keyboard="Numeric"/>
+
+            <Button Text="Подтвердить" 
+                    BackgroundColor="#92D36E"
+                    Grid.Column="2"
+                    Grid.Row="0"
+                    Clicked="SetPrice"/>
+
+            <BoxView Grid.ColumnSpan="3"
+                     HeightRequest="1"
+                     Grid.Row="1"
+                     Color="#92D36E"/>
+        </Grid>
+        <ScrollView x:Name="MaxInfoField"
+                    Grid.RowSpan="3"
+                    IsVisible="False">
+            <Grid ColumnDefinitions="*" 
+                  RowDefinitions="auto,auto,auto,*">
+
+                <Image Source="{Binding ImageSource}"
+                       Grid.Row="0"/>
+
+                <Label Text="{Binding Name}" 
+                       FontSize="24" 
+                       FontAttributes="Bold"
+                       Margin="0,0,0,0"
+                       TextColor="#92D36E"
+                       Grid.Row="1"/>
+                
+                <Label Text="{Binding StatusID}" 
+                       x:Name="StatusName"
+                       FontSize="18" 
+                       Margin="0,0,0,0"
+                       TextColor="#92D36E"
+                       Grid.Row="2"/>
+                
+                <Picker x:Name="ServicePicker" 
+                        Title="{Binding StatusID}" 
+                        Grid.Row="2"
+                        TitleColor="#92D36E"
+                        IsVisible="False">
+                    <Picker.Items>
+                        <x:String>Принят</x:String>
+                        <x:String>Завершен</x:String>
+                        <x:String>Выдан</x:String>
+                    </Picker.Items>
+                </Picker>
+
+
+                <ScrollView Grid.Row="3">
+                    <Label Text="{Binding Description}" 
+                           FontSize="16"/>
+                </ScrollView>
+            </Grid>
+        </ScrollView>
+        <ScrollView x:Name="ChatField"
+                    Grid.Row="2"
+                    VerticalOptions="Fill">
+            <CollectionView x:Name="MessagesList"
+                            VerticalOptions="Fill">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Border Stroke="{Binding Color}"
+                                    StrokeThickness="1"
+                                    BackgroundColor="White"
+                                    HorizontalOptions="{Binding HorizOpt}"
+                                    Padding="10"
+                                    Margin="5,5,5,0">
+
+                                <Grid RowDefinitions="Auto, Auto">
+                                    <Label Grid.Row="0"
+                                           Text="{Binding MessageText}"
+                                           FontSize="14"
+                                           TextColor="#333"
+                                           LineBreakMode="WordWrap"
+                                           MaxLines="10"/>
+
+                                    <Label Grid.Row="1"
+                                           HorizontalOptions="End"
+                                           Text="{Binding SentAt, StringFormat='{0:dd.MM.yyyy}'}"
+                                           FontSize="10"
+                                           TextColor="#888"/>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+
+        <Grid Grid.Row="3"
+              ColumnDefinitions="*,Auto" 
+              RowDefinitions="*"  
+              HeightRequest="50">
+
+            <Editor x:Name="MessageEntry" 
+                   Placeholder="Введите сообщение..." 
+                   Grid.Column="0"
+                   HeightRequest="50"
+                   VerticalOptions="Center"
+                   Margin="0,0,10,0"/>
+
+            <Button x:Name="MinInfoButton"
+                    Text="Отправить" 
+                    BackgroundColor="#92D36E"
+                    Grid.Column="1"
+                    VerticalOptions="Center"
+                    HorizontalOptions="End"
+                    Clicked="SendMessageButton"/>
+
+            <Button x:Name="MaxInfoButton"
+                    Clicked="OnMinInfoFieldTapped"
+                    Text="Cкрыть" 
+                    BackgroundColor="#92D36E"
+                    Grid.ColumnSpan="2"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    IsVisible="False"/>
+        </Grid>
+    </Grid>
+</ContentPage>

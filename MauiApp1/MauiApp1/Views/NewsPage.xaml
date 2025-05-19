@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.NewsPage">
+
+    <Grid RowDefinitions="auto,*,auto"
+          ColumnDefinitions="*"
+          Margin="10">
+
+        <Grid Grid.Row="0" ColumnDefinitions="35,*">
+            <Image Source="notice_icon.png" 
+                   Margin="10,5,0,0" 
+                   Grid.Column="0" 
+                   Grid.Row="0"/>
+            <SearchBar TextChanged="OnSearchBar"
+                       CancelButtonColor="#92D36E"  
+                       Placeholder="Поиск" 
+                       BackgroundColor="White" 
+                       Margin="10" 
+                       HeightRequest="40" 
+                       Grid.Column="1" 
+                       Grid.Row="0"/>
+        </Grid>
+        <RefreshView Grid.Row="1" 
+                     VerticalOptions="Fill" 
+                     x:Name="NewsRefreshView" 
+                     RefreshColor="#92D36E"
+                     Command="{Binding RefreshCommand}">
+            <CollectionView x:Name="CollectionNews" 
+                            EmptyView="Нет данных для отображения">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10" RowDefinitions="auto,auto,auto,20" BackgroundColor="white">
+
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnItemTapped"/>
+                            </Grid.GestureRecognizers>
+
+                            <Image Source="{Binding ImageSource}"
+                                   Aspect="AspectFit"
+                                   Grid.Row="0" />
+                            <Label Text="{Binding Name}"
+                                    FontSize="18"
+                                    TextColor="#92D36E"
+                                    FontAttributes="Bold"
+                                    Grid.Row="1"
+                                    Margin="0,10,0,5"/>
+
+                            <Label Text="{Binding Description}"
+                                   FontSize="14"
+                                   LineBreakMode="WordWrap"
+                                   Grid.Row="2"
+                                   Margin="0,0,0,10"/>
+
+                            <Grid Grid.Row="3" ColumnSpacing="10" HorizontalOptions="End" ColumnDefinitions="*,*,*" HeightRequest="20">
+
+                                <HorizontalStackLayout Grid.Column="0">
+                                    <Image Source="like_icon.png"
+                                                 WidthRequest="20"
+                                                 HeightRequest="20"
+                                                 Aspect="AspectFit"
+                                                 BackgroundColor="Transparent"
+                                                 InputTransparent="False">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnLikeIconTapped"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+
+                                    <Label Text="{Binding LikeCount}"
+                                            FontSize="12"
+                                            Margin="5,0,0,0"/>
+
+                                </HorizontalStackLayout>
+
+                                <HorizontalStackLayout Grid.Column="1">
+                                    <Image Source="dislike_icon.png"
+                                                 WidthRequest="20"
+                                                 HeightRequest="20" 
+                                                 InputTransparent="False">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnDisLikeIconTapped"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    <Label Text="{Binding DislikeCount}"
+                                           FontSize="12"
+                                           Margin="5,0,0,0"/>
+                                </HorizontalStackLayout>
+
+                                <HorizontalStackLayout Grid.Column="2">
+                                    <Image Source="comments_icon.png"
+                                            WidthRequest="20"
+                                            HeightRequest="20"                                                 
+                                            InputTransparent="False">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnCommentsIconTapped"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    <Label Text="{Binding CommentsCount}"
+                                               FontSize="12"
+                                               Margin="5,0,0,0"/>
+                                </HorizontalStackLayout>
+                            </Grid>
+                            <BoxView Grid.Row="4"
+                                     HeightRequest="1"
+                                     Color="#e0e0e0"
+                                     Margin="0,20,0,0" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+
+        <VerticalStackLayout x:Name="ForMasterField"
+                             Grid.Row="2"
+                             WidthRequest="300"
+                             Margin="0,10,0,0"
+                             HorizontalOptions="Center"
+                             IsVisible="false">
+            <Button Clicked="ButtonToAddNewsPage"
+                    Text="Добавить новость"
+                    IsVisible="true"
+                    HeightRequest="50"
+                    WidthRequest="300"
+                    FontSize="18"
+                    BackgroundColor="#92D36E"
+                    TextColor="White"/>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>
+ 

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Views.AddProductPage">
+    <Grid>
+        <ScrollView>
+            <VerticalStackLayout Padding="15" Margin="25" Spacing="15">
+                <Label Text="Выбор изображения" 
+                       VerticalOptions="Center" 
+                       TextColor="#92D36E" 
+                       FontSize="18" />
+
+                <ImageButton x:Name="ProductImage"
+                             Source="item_icon.png" 
+                             Clicked="LoadImage"
+                             WidthRequest="200" 
+                             HeightRequest="150"
+                             Aspect="Fill"/>
+
+                <Label Text="Название товара" 
+                       VerticalOptions="Center" 
+                       TextColor="#92D36E" 
+                       FontSize="18"/>
+
+                <Entry x:Name="Name" 
+                       Placeholder="Введите название товара" />
+
+                <Label Text="Описание товара" 
+                        VerticalOptions="Center" 
+                        TextColor="#92D36E" 
+                        FontSize="18" />
+
+                <Editor x:Name="Description" 
+                        Placeholder="Описание" 
+                        HeightRequest="200"/>
+
+                <Label Text="Цена" 
+                        VerticalOptions="Center" 
+                        TextColor="#92D36E" 
+                        FontSize="18" />
+
+                <Entry x:Name="Price" 
+                        Placeholder="Цена"
+                        Keyboard="Numeric"/>
+
+                <Button Text="ПОДТВЕРДИТЬ" 
+                        x:Name="ButtonForAddProduct"
+                        Clicked="ButtonAddProduct"
+                        BackgroundColor="#92D36E" 
+                        TextColor="White" 
+                        Margin="0,30,0,0"/>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <BoxView x:Name="overlay"
+                 Color="Black"
+                 Opacity="0.5"
+                 IsVisible="False"
+                 ZIndex="99"/>
+        <ActivityIndicator x:Name="activityIndicator" 
+                   Color="#92D36E" 
+                   HorizontalOptions="Center" 
+                   VerticalOptions="Center" 
+                   IsVisible="False" 
+                   IsRunning="False"
+                   ZIndex="100"/>
+    </Grid>
+</ContentPage>

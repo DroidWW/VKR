@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Cache-control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Панель управления</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .button-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+        }
+
+        .button-wrapper button {
+            padding: 14px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            background-color: #92D36E;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button-wrapper button:hover {
+            background-color: #7ab856;
+        }
+
+        .button-wrapper .logout-button {
+            background-color: #e74c3c;
+        }
+
+        .button-wrapper .logout-button:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Добро пожаловать!</h2>
+
+        <div class="button-wrapper">
+            <button onclick="location.href='usersManager.html'">Управление пользователями</button>
+            <button onclick="location.href='mastersManager.html'">Управление мастерами</button>
+            <button onclick="location.href='reportsManager.html'">Управление отчетами</button>
+            <button onclick="location.href='shopManager.html'">Управление магазином</button>
+            <button class="logout-button" onclick="logout()">Выйти</button>
+        </div>
+    </div>
+    <script>
+        fetch('/api/adminAuth/isAuthed')
+            .then(res => res.json())
+            .then(data => {
+                if (!data.success)
+                    window.location.href = "index.html";
+            })
+            .catch(err => {
+                console.error(err);
+                alert('Произошла ошибка при получении информации');
+                window.location.href = "index.html";
+            });
+    </script>
+    <script>
+        function logout(){
+            fetch('api/adminAuth/logout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(() => {
+                window.location.href = "index.html";
+            });
+        }
+    </script>
+</body>
+</html>
+

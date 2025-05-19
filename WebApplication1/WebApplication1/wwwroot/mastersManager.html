@@ -1,0 +1,408 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Cache-control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Мастера</title>
+    <style>
+        #addMasterForm {
+            display: block;
+        }
+
+        #mastersList {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        #masterContainer {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: start;
+            padding-top: 80px;
+        }
+
+        h3 {
+            color: #92D36E;
+        }
+
+        div[id$="Form"], #mastersList {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 30px;
+            min-width: 500px;
+        }
+
+        #addMasterForm h3 {
+            margin-top: 0;
+        }
+
+        #mastersList h3 {
+            margin-top: 0;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="button"] {
+            background-color: #92D36E;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="button"]:hover {
+            background-color: #7ab856;
+        }
+
+        .button-wrapper {
+            text-align: center;
+        }
+
+        .master-item {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fafafa;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .master-info {
+            width: 100%;
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .master-info strong {
+            margin-bottom: 5px;
+        }
+
+        .delete-button {
+            background-color: transparent;
+            border: none;
+            color: #92D36E;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .delete-button:hover {
+            text-decoration: underline;
+        }
+
+        .edit-form {
+            margin-top: 10px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            width: 95%;
+        }
+
+    </style>
+</head>
+<body>
+    <nav style="
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;">
+        <div style="
+            display: flex;
+            gap: 20px;
+            font-family: Arial, sans-serif;">
+            <a href="usersManager.html" style="text-decoration: none; color: #333; font-weight: 500;">Пользователи</a>
+            <a href="mastersManager.html" style="text-decoration: none; color: #92D36E; font-weight: bold;">Мастера</a>
+            <a href="reportsManager.html" style="text-decoration: none; color: #333; font-weight: 500;">Отчёты</a>
+            <a href="shopManager.html" style="text-decoration: none; color: #333; font-weight: 500;">Магазин</a>
+            <a href="#" onclick="logout()" style="text-decoration: none; color: #e74c3c; font-weight: bold;">Выход</a>
+        </div>
+    </nav>
+    <div id="addMasterForm">
+        <h3>Добавить мастера</h3>
+
+        Логин:<br />
+        <input id="newUsername" type="text" /><br /><br />
+
+        Пароль:<br />
+        <input id="newPassword" type="password" /><br /><br />
+
+        Имя:<br />
+        <input id="newFirstname" type="text" /><br /><br />
+
+        Фамилия:<br />
+        <input id="newMiddlename" type="text" /><br /><br />
+
+        Отчество:<br />
+        <input id="newLastname" type="text" /><br /><br />
+
+        <div class="button-wrapper">
+            <input type="button" id="addMasterButton" value="Добавить" />
+        </div>
+    </div>
+
+    <div id="mastersList">
+        <h3>Список мастеров</h3>
+        <div id="masterContainer">
+            Загрузка...
+        </div>
+    </div>
+    <script>
+        fetch('/api/adminAuth/isAuthed')
+             .then(res => res.json())
+             .then(data => {
+                 if (!data.success)
+                     window.location.href = "index.html";
+             })
+             .catch(err => {
+                 console.error(err);
+                 alert('Произошла ошибка при получении информации');
+                 window.location.href = "index.html";
+             });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const addMasterButton = document.getElementById("addMasterButton");
+
+            const addMasterFormDiv = document.getElementById("addMasterForm");
+            const mastersListDiv = document.getElementById("mastersList");
+
+            loadUsers();
+
+            addMasterButton.addEventListener("click", function () {
+                const username = document.getElementById("newUsername").value;
+                const password = document.getElementById("newPassword").value;
+                const firstname = document.getElementById("newFirstname").value;
+                const lastname = document.getElementById("newLastname").value;
+                const middlename = document.getElementById("newMiddlename").value;
+
+                if (!username || !password || !firstname || !lastname || !middlename) {
+                    alert('Введите данные!');
+                    return;
+                }
+
+                fetch('/api/adminAuth/addMaster', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        Username: username,
+                        Password: password,
+                        Firstname: firstname,
+                        Lastname: lastname,
+                        Middlename: middlename
+                    })
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert(data.message);
+                            document.getElementById("newUsername").value = "";
+                            document.getElementById("newPassword").value = "";
+                            document.getElementById("newFirstname").value = "";
+                            document.getElementById("newLastname").value = "";
+                            document.getElementById("newMiddlename").value = "";
+                            loadUsers();
+                        }
+                        else {
+                            alert('Ошибка: ' + data.message);
+                        }
+                    })
+                    .catch(err => {
+                        console.error(err);
+                        alert('Произошла ошибка при добавлении мастера');
+                    });
+            });
+
+            async function loadUsers() {
+                const container = document.getElementById("masterContainer");
+                container.innerHTML = "Загрузка...";
+                try {
+                    const res = await fetch('/api/adminAuth/getMasters');
+                    const data = await res.json();
+
+                    if (!data.success) {
+                        container.innerHTML = "Ошибка загрузки: " + data.message;
+                        return;
+                    }
+
+                    if (data.data.length === 0) {
+                        container.innerHTML = "Мастеров нет";
+                        return;
+                    }
+
+                    container.innerHTML = "";
+
+                    data.data.forEach(master => {
+                        const div = document.createElement("div");
+                        div.className = "master-item";
+                        div.innerHTML = `
+                            <div class="master-info">
+                                <strong> ${master.middlename} ${master.firstname} ${master.lastname}</strong>
+                                <span> Логин: ${master.username}</span>
+                            </div>
+                            <div style="display: flex; gap: 10px;">
+                                <button onclick="editMaster(${master.userID}, this)" class="delete-button">Редактировать</button>
+                                <button onclick="deleteMaster(${master.userID})" class="delete-button">Удалить</button>
+                            </div>
+                            <div class="edit-form" id="editForm-${master.userID}" style="display: none;"></div>
+                        `;
+                        container.appendChild(div);
+                    });
+                }
+                catch (err) {
+                    console.error(err);
+                    container.innerHTML = "Ошибка загрузки данных";
+                }
+            }
+
+            window.deleteMaster = async function (id) {
+                if (!confirm("Вы уверены, что хотите удалить этого мастера?")) {
+                    return;
+                }
+                try {
+                    const res = await fetch(`/api/adminAuth/deleteMaster/${id}`, {
+                        method: "DELETE"
+                    });
+
+                    const data = await res.json();
+                    alert(data.message);
+
+                    if (data.success) {
+                        loadUsers();
+                    }
+                }
+                catch (err) {
+                    console.error(err);
+                    alert('Ошибка при удалении');
+                }
+            }
+            window.editMaster = function(masterId, buttonElement) {
+                const container = document.getElementById("masterContainer");
+                const masterItem = buttonElement.closest(".master-item");
+                const editFormDiv = document.getElementById(`editForm-${masterId}`);
+
+                if (editFormDiv.style.display === "block") {
+                    editFormDiv.style.display = "none";
+                    return;
+                }
+
+                fetch(`/api/adminAuth/getMaster/${masterId}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        if (!data.success) {
+                            alert("Ошибка загрузки данных");
+                            return;
+                        }
+
+                        const master = data.data;
+
+                        editFormDiv.innerHTML = `
+                            <label>Логин:<br />
+                                <input type="text" id="editUsername-${masterId}" value="${master.username}" />
+                            </label><br />
+                            <label>Пароль:<br />
+                                <input type="text" id="editPassword-${masterId}" value="${master.password}" />
+                            </label><br /><br />
+                            <label>Имя:<br />
+                                <input type="text" id="editFirstname-${masterId}" value="${master.firstname}" />
+                            </label><br />
+                            <label>Фамилия:<br />
+                                <input type="text" id="editMiddlename-${masterId}" value="${master.middlename}" />
+                            </label><br />
+                            <label>Отчество:<br />
+                                <input type="text" id="editLastname-${masterId}" value="${master.lastname}" />
+                            </label><br />
+                            <button onclick="saveMaster(${masterId})" style="background-color:#92D36E; border-color:#92D36E; color: white;">Сохранить</button>
+                        `;
+                        editFormDiv.style.display = "block";
+                    });
+            };
+
+            window.saveMaster = async function(masterId) {
+                const username = document.getElementById(`editUsername-${masterId}`).value;
+                const password = document.getElementById(`editPassword-${masterId}`).value;
+                const firstname = document.getElementById(`editFirstname-${masterId}`).value;
+                const middlename = document.getElementById(`editMiddlename-${masterId}`).value;
+                const lastname = document.getElementById(`editLastname-${masterId}`).value;
+
+                const masterModel = {
+                    Username: username,
+                    Password: password,
+                    Firstname: firstname,
+                    Middlename: middlename,
+                    Lastname: lastname
+                };
+
+                try {
+                    const res = await fetch(`/api/adminAuth/updateMaster/${masterId}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(masterModel)
+                    });
+
+                    const data = await res.json();
+                    if (data.success) {
+                        alert("Данные успешно обновлены");
+                        loadUsers(); 
+                    } else {
+                        alert("Ошибка: " + data.message);
+                    }
+                } catch (err) {
+                    console.error(err);
+                    alert("Ошибка при сохранении данных");
+                }
+            };
+        });
+
+        function logout() {
+            fetch('/api/adminAuth/logout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(() => {
+                window.location.href = "index.html";
+            });
+        }
+    </script>
+</body>
+</html>

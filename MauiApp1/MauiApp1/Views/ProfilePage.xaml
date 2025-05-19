@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.ProfilePage">
+    <Grid>
+        <ScrollView>
+            <VerticalStackLayout Padding="15" Margin="25" Spacing="15">
+                <Label Text="Изображение профиля" 
+                       VerticalOptions="Center" 
+                       TextColor="#92D36E" 
+                       FontSize="15"/>
+
+                <HorizontalStackLayout VerticalOptions="Center" Spacing="150">
+                    <ImageButton x:Name="ProfileImage"
+                                 WidthRequest="100" 
+                                 HeightRequest="100"
+                                 Aspect="AspectFill"
+                                 Clicked="OnUpdateImageClicked"/>
+                    <ImageButton Source="logout_icon.png"
+                                 WidthRequest="50" 
+                                 HeightRequest="25"
+                                 BackgroundColor="Transparent"
+                                 Clicked="LogOutButton"/>
+                </HorizontalStackLayout>
+
+                <Label x:Name="FullName" 
+                       Text="Ponov Pon Ponovich"
+                       VerticalOptions="Center" 
+                       TextColor="#92D36E" 
+                       FontSize="22"
+                       Margin="0,0,0,20"/>
+
+                <Label Text="Логин" 
+                       FontSize="18"
+                       TextColor="#92D36E"/>
+
+                <Entry x:Name="NewLogin" 
+                       Placeholder="Введите новый логин"/>
+
+                <Label Text="Пароль" 
+                       FontSize="18"
+                       TextColor="#92D36E"/>
+
+                <Entry x:Name="NewPassword" 
+                       IsPassword="True" 
+                       Placeholder="Введите новый пароль"/>
+
+                <Label Text="Подтвердите пароль" 
+                       FontSize="18"
+                       TextColor="#92D36E"/>
+
+                <Entry x:Name="AccessPassword" 
+                       IsPassword="True" 
+                       Placeholder="Подтвердите новый пароль"/>
+
+                <Label Text="Фамилия" 
+                       FontSize="18"
+                       TextColor="#92D36E"/>
+
+                <Entry x:Name="SecondName" 
+                        Placeholder="Введите фамилию"/>
+
+                <Label Text="Имя" 
+                       FontSize="18"
+                       TextColor="#92D36E"/>
+
+                <Entry x:Name="FirstName" 
+                       Placeholder="Введите имя"/>
+
+                <Label Text="Отчество" 
+                       FontSize="18"
+                       TextColor="#92D36E"/>
+
+                <Entry x:Name="ThirdName" 
+                       Placeholder="Введите отчество"/>
+
+                <Button Text="ПОДТВЕРДИТЬ" 
+                        x:Name="ButtonForAccept"
+                        Clicked="ButtonForChangesInfo" 
+                        BackgroundColor="#92D36E" 
+                        TextColor="White" 
+                        Margin="0,30,0,0"
+                        HeightRequest="50"/>
+
+                <Button x:Name="AddMasterButton"
+                        Text="ДОБАВИТЬ МАСТЕРА" 
+                        Clicked="ButtonForAddMaster" 
+                        BackgroundColor="#92D36E" 
+                        TextColor="White" 
+                        Margin="0,10,0,0"
+                        HeightRequest="50"
+                        IsVisible="False"/>
+
+                <Button x:Name="WebMasterButton"
+                        Text="ПЕРЕЙТИ НА САЙТ" 
+                        Clicked="ButtonToWeb" 
+                        BackgroundColor="#92D36E" 
+                        TextColor="White" 
+                        Margin="0,10,0,0"
+                        HeightRequest="50"
+                        IsVisible="False"/>
+            </VerticalStackLayout>
+        </ScrollView>
+        
+        <BoxView x:Name="overlay"
+                 Color="Black"
+                 Opacity="0.5"
+                 IsVisible="False"
+                 ZIndex="99"/>
+        <ActivityIndicator x:Name="activityIndicator" 
+                           Color="#92D36E" 
+                           HorizontalOptions="Center" 
+                           VerticalOptions="Center" 
+                           IsVisible="False" 
+                           IsRunning="False"
+                           ZIndex="100"/>
+    </Grid>
+</ContentPage>

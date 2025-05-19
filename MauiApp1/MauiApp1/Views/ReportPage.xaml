@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Views.ReportPage">
+    <Grid RowDefinitions="*,auto"
+          ColumnDefinitions="*"
+          Margin="10">
+
+        <ScrollView Grid.Row="0">
+            <Grid RowDefinitions="auto,auto,*">
+                <Image x:Name="DefaultImage"
+                       Source="{Binding ImageSource}"
+                       Grid.Row="0"
+                       HeightRequest="200"
+                       Aspect="AspectFit"/>
+                
+                <ImageButton x:Name="EditImage"
+                             Source="{Binding ImageSource}"
+                             Grid.Row="0"
+                             HeightRequest="200"
+                             Aspect="AspectFit"
+                             Clicked="OnUpdateImageClicked"
+                             IsVisible="False"/>
+
+                <Label Text="{Binding Name}" 
+                       x:Name="DefaultName"
+                       FontSize="24" 
+                       FontAttributes="Bold"
+                       TextColor="#92D36E"
+                       Margin="0,10,0,0"
+                       Grid.Row="1"/>
+
+                <Entry x:Name="EditName"
+                        Text="{Binding Name, Mode=TwoWay}"
+                        Placeholder="Заголовок"
+                        TextColor="#92D36E"
+                        FontSize="24"
+                        IsVisible="False"
+                        Margin="0,10,0,0"
+                        Grid.Row="1"/>
+                
+                <Border Grid.Row="2"
+                        Stroke="#92D36E"
+                        StrokeShape="RoundRectangle 10"
+                        StrokeThickness="1"
+                        x:Name="DefaultDescription"
+                        BackgroundColor="White"
+                        Padding="10"
+                        Margin="0,10,0,10">
+                    <Label x:Name="DefaultDescriptionText"
+                           Text="{Binding Description}"
+                           FontSize="16" />
+                </Border>
+                <ScrollView Grid.Row="2">
+                    <Editor x:Name="EditDescription"
+                        Text="{Binding Description, Mode=TwoWay}"
+                        Placeholder="Описание"
+                        IsVisible="False"
+                        Margin="0,10,0,10"/>
+                </ScrollView>
+            </Grid>
+        </ScrollView>
+
+        <Grid Grid.Row="1"
+              x:Name="ForMasterField"
+              ColumnDefinitions="*,*"
+              HeightRequest="50"
+              VerticalOptions="End"
+              IsVisible="false">
+
+            <Button x:Name="EditButton"
+                    Text="Редактировать" 
+                    Clicked="EditReport"
+                    BackgroundColor="#92D36E"
+                    Grid.Column="0"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Start"/>
+
+            <Button Text="Удалить"
+                    x:Name="DeleteButton"
+                    Clicked="DeleteReport"
+                    BackgroundColor="#92D36E"
+                    Grid.Column="1"
+                    VerticalOptions="Center"
+                    HorizontalOptions="End"/>
+        </Grid>
+        
+        <BoxView x:Name="overlay"
+                 Color="Black"
+                 Opacity="0.5"
+                 IsVisible="False"
+                 ZIndex="99"/>
+        <ActivityIndicator x:Name="activityIndicator" 
+                           Color="#92D36E" 
+                           HorizontalOptions="Center" 
+                           VerticalOptions="Center" 
+                           IsVisible="False" 
+                           IsRunning="False"
+                           ZIndex="100"/>
+    </Grid>
+</ContentPage>
+    

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Views.CommentsPage">
+    <Grid RowDefinitions="*, 70">
+
+        <CollectionView Grid.Row="0"
+                        x:Name="CollectionComments"
+                        EmptyView="Нет комментариев для отображения"
+                        Margin="10,10,10,0">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Border Stroke="#DDD"
+                                StrokeThickness="1"
+                                BackgroundColor="White"
+                                Padding="10"
+                                Margin="5,5,5,0">
+
+                            <Grid RowDefinitions="Auto, Auto">
+                                <Label Grid.Row="0"
+                                       Text="{Binding Text}"
+                                       FontSize="14"
+                                       TextColor="#333"
+                                       LineBreakMode="WordWrap"
+                                       MaxLines="10"/>
+
+                                <Label Grid.Row="1"
+                                       HorizontalOptions="End"
+                                       Text="{Binding CreatedAt, StringFormat='{0:dd.MM.yyyy}'}"
+                                       FontSize="10"
+                                       TextColor="#888"/>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        
+        <Grid Grid.Row="1"
+              ColumnDefinitions="*, Auto"
+              Padding="10"
+              BackgroundColor="White"
+              HeightRequest="70">
+            <Editor Grid.Column="0"
+                    x:Name="CommentEditor"
+                    Placeholder="Введите ваш комментарий..."
+                    BackgroundColor="#F0F0F0"/>
+
+            <Button Grid.Column="1"
+                    Text="Отправить"
+                    Clicked="AddNewComment"
+                    BackgroundColor="#92D36E"
+                    TextColor="White"
+                    Margin="10,0,0,0"/>
+        </Grid>
+    </Grid>
+</ContentPage>
+    

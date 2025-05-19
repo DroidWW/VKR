@@ -1,0 +1,133 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\VSProjects\\MauiApp1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{720E47F5-41CE-4C46-89F1-2A16E8F735A9}|MauiApp1\\MauiApp1.csproj|d:\\vsprojects\\mauiapp1\\mauiapp1\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{720E47F5-41CE-4C46-89F1-2A16E8F735A9}|MauiApp1\\MauiApp1.csproj|solutionrelative:mauiapp1\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{720E47F5-41CE-4C46-89F1-2A16E8F735A9}|MauiApp1\\MauiApp1.csproj|d:\\vsprojects\\mauiapp1\\mauiapp1\\models\\messages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{720E47F5-41CE-4C46-89F1-2A16E8F735A9}|MauiApp1\\MauiApp1.csproj|solutionrelative:mauiapp1\\models\\messages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{720E47F5-41CE-4C46-89F1-2A16E8F735A9}|MauiApp1\\MauiApp1.csproj|d:\\vsprojects\\mauiapp1\\mauiapp1\\views\\chatpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{720E47F5-41CE-4C46-89F1-2A16E8F735A9}|MauiApp1\\MauiApp1.csproj|solutionrelative:mauiapp1\\views\\chatpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{720E47F5-41CE-4C46-89F1-2A16E8F735A9}|MauiApp1\\MauiApp1.csproj|d:\\vsprojects\\mauiapp1\\mauiapp1\\views\\chatpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{720E47F5-41CE-4C46-89F1-2A16E8F735A9}|MauiApp1\\MauiApp1.csproj|solutionrelative:mauiapp1\\views\\chatpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{720E47F5-41CE-4C46-89F1-2A16E8F735A9}|MauiApp1\\MauiApp1.csproj|d:\\vsprojects\\mauiapp1\\mauiapp1\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{720E47F5-41CE-4C46-89F1-2A16E8F735A9}|MauiApp1\\MauiApp1.csproj|solutionrelative:mauiapp1\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{720E47F5-41CE-4C46-89F1-2A16E8F735A9}|MauiApp1\\MauiApp1.csproj|d:\\vsprojects\\mauiapp1\\mauiapp1\\views\\commentspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{720E47F5-41CE-4C46-89F1-2A16E8F735A9}|MauiApp1\\MauiApp1.csproj|solutionrelative:mauiapp1\\views\\commentspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{720E47F5-41CE-4C46-89F1-2A16E8F735A9}|MauiApp1\\MauiApp1.csproj|d:\\vsprojects\\mauiapp1\\mauiapp1\\views\\newspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{720E47F5-41CE-4C46-89F1-2A16E8F735A9}|MauiApp1\\MauiApp1.csproj|solutionrelative:mauiapp1\\views\\newspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 3,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "D:\\VSProjects\\MauiApp1\\MauiApp1\\App.xaml.cs",
+              "RelativeDocumentMoniker": "MauiApp1\\App.xaml.cs",
+              "ToolTip": "D:\\VSProjects\\MauiApp1\\MauiApp1\\App.xaml.cs",
+              "RelativeToolTip": "MauiApp1\\App.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T11:45:16.376Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CommentsPage.xaml",
+              "DocumentMoniker": "D:\\VSProjects\\MauiApp1\\MauiApp1\\Views\\CommentsPage.xaml",
+              "RelativeDocumentMoniker": "MauiApp1\\Views\\CommentsPage.xaml",
+              "ToolTip": "D:\\VSProjects\\MauiApp1\\MauiApp1\\Views\\CommentsPage.xaml",
+              "RelativeToolTip": "MauiApp1\\Views\\CommentsPage.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-18T07:19:44.415Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "NewsPage.xaml",
+              "DocumentMoniker": "D:\\VSProjects\\MauiApp1\\MauiApp1\\Views\\NewsPage.xaml",
+              "RelativeDocumentMoniker": "MauiApp1\\Views\\NewsPage.xaml",
+              "ToolTip": "D:\\VSProjects\\MauiApp1\\MauiApp1\\Views\\NewsPage.xaml",
+              "RelativeToolTip": "MauiApp1\\Views\\NewsPage.xaml",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-18T06:44:29.874Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MauiProgram.cs",
+              "DocumentMoniker": "D:\\VSProjects\\MauiApp1\\MauiApp1\\MauiProgram.cs",
+              "RelativeDocumentMoniker": "MauiApp1\\MauiProgram.cs",
+              "ToolTip": "D:\\VSProjects\\MauiApp1\\MauiApp1\\MauiProgram.cs",
+              "RelativeToolTip": "MauiApp1\\MauiProgram.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAgwBgAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T05:57:29.926Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Messages.cs",
+              "DocumentMoniker": "D:\\VSProjects\\MauiApp1\\MauiApp1\\Models\\Messages.cs",
+              "RelativeDocumentMoniker": "MauiApp1\\Models\\Messages.cs",
+              "ToolTip": "D:\\VSProjects\\MauiApp1\\MauiApp1\\Models\\Messages.cs",
+              "RelativeToolTip": "MauiApp1\\Models\\Messages.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAAwB4AAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T05:40:15.444Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ChatPage.xaml",
+              "DocumentMoniker": "D:\\VSProjects\\MauiApp1\\MauiApp1\\Views\\ChatPage.xaml",
+              "RelativeDocumentMoniker": "MauiApp1\\Views\\ChatPage.xaml",
+              "ToolTip": "D:\\VSProjects\\MauiApp1\\MauiApp1\\Views\\ChatPage.xaml",
+              "RelativeToolTip": "MauiApp1\\Views\\ChatPage.xaml",
+              "ViewState": "AgIAAKQAAAAAAAAAAAAswM4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-18T05:42:33.957Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ChatPage.xaml.cs",
+              "DocumentMoniker": "D:\\VSProjects\\MauiApp1\\MauiApp1\\Views\\ChatPage.xaml.cs",
+              "RelativeDocumentMoniker": "MauiApp1\\Views\\ChatPage.xaml.cs",
+              "ToolTip": "D:\\VSProjects\\MauiApp1\\MauiApp1\\Views\\ChatPage.xaml.cs",
+              "RelativeToolTip": "MauiApp1\\Views\\ChatPage.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T05:34:14.697Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

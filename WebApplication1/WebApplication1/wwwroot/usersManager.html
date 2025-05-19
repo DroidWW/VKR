@@ -1,0 +1,408 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Cache-control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Пользователи</title>
+    <style>
+        #addUserForm {
+            display: block;
+        }
+
+        #usersList {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        #userContainer {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: start;
+            padding-top: 80px;
+        }
+
+        h3 {
+            color: #92D36E;
+        }
+
+        div[id$="Form"], #usersList {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 30px;
+            min-width: 500px;
+        }
+
+        #addUserForm h3 {
+            margin-top: 0;
+        }
+
+        #usersList h3 {
+            margin-top: 0;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="button"] {
+            background-color: #92D36E;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="button"]:hover {
+            background-color: #7ab856;
+        }
+
+        .button-wrapper {
+            text-align: center;
+        }
+
+        .user-item {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fafafa;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .user-info {
+            width: 100%;
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .user-info strong {
+            margin-bottom: 5px;
+        }
+
+        .delete-button {
+            background-color: transparent;
+            border: none;
+            color: #92D36E;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .delete-button:hover {
+            text-decoration: underline;
+        }
+
+        .edit-form {
+            margin-top: 10px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            width: 95%;
+        }
+    </style>
+</head>
+<body>
+    <nav style="
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;">
+        <div style="
+            display: flex;
+            gap: 20px;
+            font-family: Arial, sans-serif;">
+            <a href="usersManager.html" style="text-decoration: none; color: #92D36E; font-weight: bold;">Пользователи</a>
+            <a href="mastersManager.html" style="text-decoration: none; color: #333; font-weight: 500;">Мастера</a>
+            <a href="reportsManager.html" style="text-decoration: none; color: #333; font-weight: 500;">Отчёты</a>
+            <a href="shopManager.html" style="text-decoration: none; color: #333; font-weight: 500;">Магазин</a>
+            <a href="#" onclick="logout()" style="text-decoration: none; color: #e74c3c; font-weight: bold;">Выход</a>
+        </div>
+    </nav>
+    <div id="addUserForm">
+        <h3>Добавить пользователя</h3>
+
+        Логин:<br />
+        <input id="newUsername" type="text" /><br /><br />
+
+        Пароль:<br />
+        <input id="newPassword" type="password" /><br /><br />
+
+        Имя:<br />
+        <input id="newFirstname" type="text" /><br /><br />
+
+        Фамилия:<br />
+        <input id="newMiddlename" type="text" /><br /><br />
+
+        Отчество:<br />
+        <input id="newLastname" type="text" /><br /><br />
+
+        <div class="button-wrapper">
+            <input type="button" id="addUserButton" value="Добавить" />
+        </div>
+    </div>
+
+    <div id="usersList">
+        <h3>Список пользователей</h3>
+        <div id="userContainer">
+            Загрузка...
+        </div>
+    </div>
+    <script>
+        fetch('/api/adminAuth/isAuthed')
+             .then(res => res.json())
+             .then(data => {
+                 if (!data.success)
+                     window.location.href = "index.html";
+             })
+             .catch(err => {
+                 console.error(err);
+                 alert('Произошла ошибка при получении информации');
+                 window.location.href = "index.html";
+             });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const addUserButton = document.getElementById("addUserButton");
+
+            const addUserFormDiv = document.getElementById("addUserForm");
+            const usersListDiv = document.getElementById("usersList");
+
+            loadUsers();
+
+            addUserButton.addEventListener("click", function () {
+                const username = document.getElementById("newUsername").value;
+                const password = document.getElementById("newPassword").value;
+                const firstname = document.getElementById("newFirstname").value;
+                const lastname = document.getElementById("newLastname").value;
+                const middlename = document.getElementById("newMiddlename").value;
+
+                if (!username || !password || !firstname || !lastname || !middlename) {
+                    alert('Введите данные!');
+                    return;
+                }
+
+                fetch('/api/adminAuth/addUser', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        Username: username,
+                        Password: password,
+                        Firstname: firstname,
+                        Lastname: lastname,
+                        Middlename: middlename
+                    })
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert(data.message);
+                            document.getElementById("newUsername").value = "";
+                            document.getElementById("newPassword").value = "";
+                            document.getElementById("newFirstname").value = "";
+                            document.getElementById("newLastname").value = "";
+                            document.getElementById("newMiddlename").value = "";
+                            loadUsers();
+                        }
+                        else {
+                            alert('Ошибка: ' + data.message);
+                        }
+                    })
+                    .catch(err => {
+                        console.error(err);
+                        alert('Произошла ошибка при добавлении пользователя');
+                    });
+            });
+
+            async function loadUsers() {
+                const container = document.getElementById("userContainer");
+                container.innerHTML = "Загрузка...";
+                try {
+                    const res = await fetch('/api/adminAuth/getUsers');
+                    const data = await res.json();
+
+                    if (!data.success) {
+                        container.innerHTML = "Ошибка загрузки: " + data.message;
+                        return;
+                    }
+
+                    if (data.data.length === 0) {
+                        container.innerHTML = "Пользователей нет";
+                        return;
+                    }
+
+                    container.innerHTML = "";
+
+                    data.data.forEach(user => {
+                        const div = document.createElement("div");
+                        div.className = "user-item";
+                        div.innerHTML = `
+                            <div class="user-info">
+                                <strong> ${user.middlename} ${user.firstname} ${user.lastname}</strong>
+                                <span> Логин: ${user.username}</span>
+                            </div>
+                            <div style="display: flex; gap: 10px;">
+                                <button onclick="editUser(${user.userID}, this)" class="delete-button">Редактировать</button>
+                                <button onclick="deleteUser(${user.userID})" class="delete-button">Удалить</button>
+                            </div>
+                            <div class="edit-form" id="editForm-${user.userID}" style="display: none;"></div>
+                        `;
+                        container.appendChild(div);
+                    });
+                }
+                catch (err) {
+                    console.error(err);
+                    container.innerHTML = "Ошибка загрузки данных";
+                }
+            }
+
+            window.deleteUser = async function (id) {
+                if (!confirm("Вы уверены, что хотите удалить этого пользователя?")) {
+                    return;
+                }
+                try {
+                    const res = await fetch(`/api/adminAuth/deleteUser/${id}`, {
+                        method: "DELETE"
+                    });
+
+                    const data = await res.json();
+                    alert(data.message);
+
+                    if (data.success) {
+                        loadUsers();
+                    }
+                }
+                catch (err) {
+                    console.error(err);
+                    alert('Ошибка при удалении');
+                }
+            }
+
+            window.editUser = function(userId, buttonElement) {
+                const container = document.getElementById("userContainer");
+                const userItem = buttonElement.closest(".user-item");
+                const editFormDiv = document.getElementById(`editForm-${userId}`);
+
+                if (editFormDiv.style.display === "block") {
+                    editFormDiv.style.display = "none";
+                    return;
+                }
+
+                fetch(`/api/adminAuth/getUser/${userId}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        if (!data.success) {
+                            alert("Ошибка загрузки данных");
+                            return;
+                        }
+
+                        const user = data.data;
+
+                        editFormDiv.innerHTML = `
+                            <label>Логин:<br />
+                                <input type="text" id="editUsername-${userId}" value="${user.username}" />
+                            </label><br />
+                            <label>Пароль:<br />
+                                <input type="text" id="editPassword-${userId}" value="${user.password}" />
+                            </label><br /><br />
+                            <label>Имя:<br />
+                                <input type="text" id="editFirstname-${userId}" value="${user.firstname}" />
+                            </label><br />
+                            <label>Фамилия:<br />
+                                <input type="text" id="editMiddlename-${userId}" value="${user.middlename}" />
+                            </label><br />
+                            <label>Отчество:<br />
+                                <input type="text" id="editLastname-${userId}" value="${user.lastname}" />
+                            </label><br />
+                            <button onclick="saveUser(${userId})" style="background-color:#92D36E; border-color:#92D36E; color: white;">Сохранить</button>
+                        `;
+                        editFormDiv.style.display = "block";
+                    });
+            };
+
+            window.saveUser = async function(userId) {
+                const username = document.getElementById(`editUsername-${userId}`).value;
+                const password = document.getElementById(`editPassword-${userId}`).value;
+                const firstname = document.getElementById(`editFirstname-${userId}`).value;
+                const middlename = document.getElementById(`editMiddlename-${userId}`).value;
+                const lastname = document.getElementById(`editLastname-${userId}`).value;
+
+                const userModel = {
+                    Username: username,
+                    Password: password,
+                    Firstname: firstname,
+                    Middlename: middlename,
+                    Lastname: lastname
+                };
+
+                try {
+                    const res = await fetch(`/api/adminAuth/updateUser/${userId}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(userModel)
+                    });
+
+                    const data = await res.json();
+                    if (data.success) {
+                        alert("Данные успешно обновлены");
+                        loadUsers(); 
+                    } else {
+                        alert("Ошибка: " + data.message);
+                    }
+                } catch (err) {
+                    console.error(err);
+                    alert("Ошибка при сохранении данных");
+                }
+            };
+        });
+
+        function logout() {
+            fetch('/api/adminAuth/logout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(() => {
+                window.location.href = "index.html";
+            });
+        }
+    </script>
+</body>
+</html>

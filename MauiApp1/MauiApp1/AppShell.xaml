@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:MauiApp1"
+       x:Class="MauiApp1.AppShell"
+       Shell.TabBarBackgroundColor="white"
+       Shell.TabBarUnselectedColor="#92D36E"
+       Shell.TabBarForegroundColor="#1E5945">
+    
+    <TabBar x:Name="MainTabBar">
+        <ShellContent Icon="news_icon.png" 
+                      ContentTemplate="{DataTemplate local:NewsPage}"
+                      Route="NewsPage"/>
+        <ShellContent Icon="messages_icon.png" 
+                      ContentTemplate="{DataTemplate local:MessagesPage}" />
+        <ShellContent x:Name="OrderTab"
+                      Icon="order_icon.png" 
+                      ContentTemplate="{DataTemplate local:OrderPage}" />
+        <ShellContent Icon="shop_icon.png" 
+                      ContentTemplate="{DataTemplate local:ShopPage}" />
+        <ShellContent Icon="profile_icon.png" 
+                      ContentTemplate="{DataTemplate local:ProfilePage}" />
+    </TabBar>
+</Shell>

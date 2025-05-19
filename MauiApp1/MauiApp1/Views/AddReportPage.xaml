@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Views.AddReportPage">
+    <Grid>
+        <VerticalStackLayout Padding="15" Margin="25" Spacing="15">
+            <Label Text="Выбор изображения" 
+                   VerticalOptions="Center" 
+                   TextColor="#92D36E" 
+                   FontSize="18" />
+
+            <ImageButton x:Name="ReportImage"
+                         Source="item_icon.png" 
+                         Clicked="LoadImage"
+                         WidthRequest="200" 
+                         HeightRequest="150"
+                         Aspect="Fill"/>
+
+            <Label Text="Название отчета" 
+                   VerticalOptions="Center" 
+                   TextColor="#92D36E" 
+                   FontSize="18"/>
+
+            <Entry x:Name="Name" 
+                 Placeholder="Введите название отчета" />
+
+            <Label Text="Описание отчета" 
+                    VerticalOptions="Center" 
+                    TextColor="#92D36E" 
+                    FontSize="18" />
+
+            <Editor x:Name="Description" 
+                    Placeholder="Описание" 
+                    HeightRequest="200"/>
+
+            <Button Text="ПОДТВЕРДИТЬ"
+                    x:Name="ButtonForAddReport"
+                    Clicked="ButtonAddReport"
+                    BackgroundColor="#92D36E" 
+                    TextColor="White" 
+                    Margin="0,30,0,0"/>
+        </VerticalStackLayout>
+
+        <BoxView x:Name="overlay"
+                 Color="Black"
+                 Opacity="0.5"
+                 IsVisible="False"
+                 ZIndex="99"/>
+        <ActivityIndicator x:Name="activityIndicator" 
+                   Color="#92D36E" 
+                   HorizontalOptions="Center" 
+                   VerticalOptions="Center" 
+                   IsVisible="False" 
+                   IsRunning="False"
+                   ZIndex="100"/>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Views.EditOrderPage">
+    <Grid RowDefinitions="*,auto"
+           ColumnDefinitions="*"
+           Margin="10">
+        <ScrollView Grid.Row="0">
+            <Grid RowDefinitions="auto,auto,auto,*">
+                <Image Source="{Binding ImageSource}"
+                        Grid.Row="0"
+                        HeightRequest="200"
+                        Aspect="AspectFit"/>
+
+                <Label Text="{Binding Name}" 
+                        FontSize="24" 
+                        FontAttributes="Bold"
+                        TextColor="#92D36E"
+                        Margin="0,10,0,0"
+                        Grid.Row="1"/>
+
+                <Picker x:Name="ServicePicker" 
+                        Title="Статус" 
+                        Grid.Row="2"
+                        TitleColor="Gray">
+                    <Picker.Items>
+                        <x:String>Принять</x:String>
+                        <x:String>Завершить</x:String>
+                        <x:String>Выдать</x:String>
+                    </Picker.Items>
+                </Picker>
+
+                <Border Grid.Row="3"
+                         Stroke="#92D36E"
+                         StrokeShape="RoundRectangle 10"
+                         StrokeThickness="1"
+                         x:Name="DefaultDescription"
+                         BackgroundColor="White"
+                         Padding="10"
+                         Margin="0,10,0,10">
+                    <Label x:Name="DefaultDescriptionText"
+                            Text="{Binding Description}"
+                            FontSize="16" />
+                </Border>
+            </Grid>
+        </ScrollView>
+
+        <Grid Grid.Row="1"
+               ColumnDefinitions="*"
+               HeightRequest="50"
+               VerticalOptions="Center">
+
+            <Button Text="Принять" 
+                    x:Name="ButtonForAcceptEdit"
+                    Clicked="EditButton"
+                    BackgroundColor="#92D36E"
+                    Grid.Column="0"
+                    HorizontalOptions="Center"/>
+        </Grid>
+        
+        <BoxView x:Name="overlay"
+                 Color="Black"
+                 Opacity="0.5"
+                 IsVisible="False"
+                 ZIndex="99"/>
+        <ActivityIndicator x:Name="activityIndicator" 
+                           Color="#92D36E" 
+                           HorizontalOptions="Center" 
+                           VerticalOptions="Center" 
+                           IsVisible="False" 
+                           IsRunning="False"
+                           ZIndex="100"/>
+    </Grid>
+</ContentPage>

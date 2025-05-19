@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Views.ShopOrdersHistory">
+    <Grid RowDefinitions="*, auto">
+        <RefreshView Grid.Row="0" 
+                     VerticalOptions="Fill" 
+                     x:Name="ShopRefreshView" 
+                     RefreshColor="#92D36E"
+                     Command="{Binding RefreshCommand}">
+            <CollectionView x:Name="ShopOrdersItems" EmptyView="Нет данных для отображения" SelectionMode="Single" SelectionChanged="ButtonToOrder">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid RowDefinitions="auto,*,10" ColumnDefinitions="*,*,auto" Padding="10" BackgroundColor="White">
+
+                            <Label Text="{Binding Price, StringFormat='Цена: {0} руб'}"
+                                   FontSize="18"
+                                   Grid.Row="0"
+                                   Grid.Column="0"
+                                   Margin="15,10,0,0"
+                                   TextColor="#92D36E"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"/>
+
+                            <Label Text="{Binding ShopOrderID, StringFormat='Заказ №: {0}'}"
+                                   FontSize="18"
+                                   Grid.Row="0"
+                                   Grid.Column="1"
+                                   Margin="15,10,0,0"
+                                   TextColor="#92D36E"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"/>
+                            
+                            <Label Text="{Binding Text}"
+                                   FontSize="18"
+                                   Grid.Row="0"
+                                   Grid.Column="2"
+                                   Margin="15,10,0,0"
+                                   TextColor="{Binding Color}"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"/>
+
+                            <BoxView Grid.Row="2"
+                                     Grid.ColumnSpan="4"
+                                     HeightRequest="1"
+                                 Color="#e0e0e0" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+        <Border x:Name="ProductsPanel"
+                   IsVisible="False"
+                   VerticalOptions="End"
+                   HorizontalOptions="Fill"
+                   HeightRequest="300"
+                   BackgroundColor="White"
+                   Padding="0">
+
+            <Grid RowDefinitions="auto,*,50">
+                <Label Text="Товары в заказе"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        TextColor="#92D36E"
+                        HorizontalOptions="Center"
+                        Padding="10"/>
+                <CollectionView x:Name="OrderProductsList"
+                                Grid.Row="1"
+                                EmptyView="Нет товаров в заказе">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid RowDefinitions="auto, *" ColumnDefinitions="80,*,auto">
+                                <Image Source="{Binding ImageSource}"
+                                       Grid.RowSpan="2"
+                                       Grid.Column="0"
+                                       Aspect="AspectFit"/>
+                                <Label Text="{Binding Name}"
+                                       Grid.Row="0"
+                                        FontAttributes="Bold"
+                                       TextColor="#92D36E"
+                                       Grid.Column="1"/>
+                                <Label Text="{Binding Description}"
+                                       Grid.Row="1"
+                                       TextColor="#333"
+                                       Grid.Column="1"/>
+                                <Label Text="{Binding Price, StringFormat=' {0} руб.'}"
+                                       Grid.RowSpan="2"
+                                       Grid.Column="2"
+                                       TextColor="#92D36E"
+                                       VerticalOptions="Center"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+               <Grid Grid.Row="2" Padding="1" ColumnDefinitions="*,*,*">
+                    <Button Text="Закрыть"
+                            x:Name="ButtonForCloseShopOrder"
+                            Grid.Column="2"
+                            Clicked="OnCloseProductsPanel"
+                            BackgroundColor="#92D36E"
+                            TextColor="White"
+                            HorizontalOptions="End"/>
+                    <Button Text="Оплатить"
+                            x:Name="ButtonForPayShopOrder"
+                            Grid.Column="1"
+                            Clicked="OnPayShopOrder"
+                            BackgroundColor="#92D36E"
+                            TextColor="White"
+                            HorizontalOptions="Center"/>
+                    <Button Text="Удалить"
+                            x:Name="ButtonForDeleteShopOrder"
+                            Grid.Column="0"
+                            Clicked="OnDeleteShopOrder"
+                            BackgroundColor="#92D36E"
+                            TextColor="White"
+                            HorizontalOptions="Start"/>
+                </Grid>
+            </Grid>
+        </Border>
+        
+        <BoxView x:Name="overlay"
+                 Color="Black"
+                 Opacity="0.5"
+                 IsVisible="False"
+                 ZIndex="99"/>
+        <ActivityIndicator x:Name="activityIndicator" 
+                           Color="#92D36E" 
+                           HorizontalOptions="Center" 
+                           VerticalOptions="Center" 
+                           IsVisible="False" 
+                           IsRunning="False"
+                           ZIndex="100"/>
+    </Grid>
+</ContentPage>

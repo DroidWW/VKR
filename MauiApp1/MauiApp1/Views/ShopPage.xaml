@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.ShopPage">
+    
+    <Grid RowDefinitions="auto,*,auto"
+          ColumnDefinitions="*"
+          Margin="10">
+        <Grid ColumnDefinitions="auto,*,*,auto" RowDefinitions="auto,10" HeightRequest="40" Grid.Row="0" Margin="0,0,0,10">
+            <Button x:Name="ButtonForAddShopOrder"
+                    Grid.Column="0"
+                    Text="Заказать"
+                    BackgroundColor="#92D36E"
+                    Padding="10"
+                    Clicked="AddShopOrder"/>
+            
+            
+            <HorizontalStackLayout Grid.Column="1" 
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"
+                                   Spacing="8">
+                <Label x:Name="ItemCount"
+                       FontSize="22"
+                       FontAttributes="Bold"
+                       TextColor="#92D36E" />
+                <Image  Source="basket_icon.png"
+                        HeightRequest="30">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ButtonToBasket"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Grid.Column="2" 
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"
+                                   Spacing="8">
+                <Label x:Name="ItemPrice" 
+                       Grid.Column="2"
+                       FontSize="22"
+                       FontAttributes="Bold"
+                       TextColor="#92D36E" />
+                <Image Source="rubble_icon.png"
+                       Grid.Column="2"
+                       HeightRequest="25"/>
+            </HorizontalStackLayout>
+            <Button 
+                Grid.Column="3"
+                Text="Заказы"
+                BackgroundColor="#92D36E"
+                Padding="10"
+                Clicked="ShopOrdersHistory"/>
+            <BoxView 
+                 Grid.ColumnSpan="4"
+                 HeightRequest="1"
+                 Grid.Row="1"
+                 Color="#92D36E"/>
+        </Grid>
+        <RefreshView Grid.Row="1" 
+                     VerticalOptions="Fill" 
+                     x:Name="ShopRefreshView" 
+                     RefreshColor="#92D36E"
+                     Command="{Binding RefreshCommand}">
+            <CollectionView x:Name="ShopItems" EmptyView="Нет данных для отображения" SelectionMode="Single" SelectionChanged="ButtonToProduct">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid RowDefinitions="auto,*,10" ColumnDefinitions="60,*,100,60" Padding="10" BackgroundColor="White">
+
+                            <Image Source="{Binding ImageSource}"
+                                   Aspect="AspectFit"
+                                   Grid.RowSpan="2"
+                                   Grid.Column="0"/>
+
+                            <VerticalStackLayout Grid.Column="1"
+                                                 Spacing="5"
+                                                 Margin="15,0,0,0">
+                                <Label Text="{Binding Name}"
+                                       FontSize="16"
+                                       FontAttributes="Bold"
+                                       TextColor="#92D36E" />
+                                <ScrollView MaximumHeightRequest="100">
+                                    <Label Text="{Binding Description}"
+                                       FontSize="14"
+                                       LineBreakMode="WordWrap" />
+                                </ScrollView>
+                            </VerticalStackLayout>
+
+                            <Label Text="{Binding Price}"
+                                   FontSize="18"
+                                   Grid.Row="0"
+                                   Grid.Column="2"
+                                   Margin="15,10,0,0"
+                                   HorizontalOptions="End"
+                                   VerticalOptions="Center"/>
+
+                            <ImageButton x:Name="PlusMinusImage"
+                                         Source="{Binding IconSource}"
+                                         Aspect="AspectFill"
+                                         Grid.Column="3"
+                                         BackgroundColor="Transparent"
+                                         Clicked="PlusClicked"
+                                         WidthRequest="40"
+                                         HeightRequest="40"
+                                         HorizontalOptions="End"
+                                         VerticalOptions="Center">
+                            </ImageButton>
+                            <BoxView Grid.Row="2"
+                                     Grid.ColumnSpan="4"
+                                     HeightRequest="1"
+                                     Color="#e0e0e0" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+        <VerticalStackLayout x:Name="ForMasterFieldShop"
+                             Grid.Row="2"
+                             WidthRequest="300"
+                             Margin="0,10,0,0"
+                             HorizontalOptions="Center"
+                             IsVisible="false">
+            <Button Clicked="ButtonToAddNewProduct"
+                    x:Name="AddNewProduct"
+                    Text="Добавить продукт"
+                    HeightRequest="50"
+                    WidthRequest="300"
+                    FontSize="18"
+                    BackgroundColor="#92D36E"
+                    TextColor="White"/>
+        </VerticalStackLayout>
+
+        <BoxView x:Name="overlay"
+                 Color="Black"
+                 Opacity="0.5"
+                 IsVisible="False"
+                 ZIndex="99"/>
+        <ActivityIndicator x:Name="activityIndicator" 
+                           Color="#92D36E" 
+                           HorizontalOptions="Center" 
+                           VerticalOptions="Center" 
+                           IsVisible="False" 
+                           IsRunning="False"
+                           ZIndex="100"/>
+    </Grid>
+</ContentPage>
+    

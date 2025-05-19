@@ -1,0 +1,205 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\order\\droid_profile.png",
+      "PackagePath": "staticwebassets\\Images\\order\\droid_profile.png"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\order\\item_icon.png",
+      "PackagePath": "staticwebassets\\Images\\order\\item_icon.png"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\order\\order_12.jpg",
+      "PackagePath": "staticwebassets\\Images\\order\\order_12.jpg"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\order\\order_13.jpg",
+      "PackagePath": "staticwebassets\\Images\\order\\order_13.jpg"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\order\\order_14.jpg",
+      "PackagePath": "staticwebassets\\Images\\order\\order_14.jpg"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\order\\order_15.jpg",
+      "PackagePath": "staticwebassets\\Images\\order\\order_15.jpg"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\order\\order_16.jpg",
+      "PackagePath": "staticwebassets\\Images\\order\\order_16.jpg"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\order\\order_17.jpg",
+      "PackagePath": "staticwebassets\\Images\\order\\order_17.jpg"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\order\\order_18.jpg",
+      "PackagePath": "staticwebassets\\Images\\order\\order_18.jpg"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\order\\order_19.jpg",
+      "PackagePath": "staticwebassets\\Images\\order\\order_19.jpg"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\order\\order_20.jpg",
+      "PackagePath": "staticwebassets\\Images\\order\\order_20.jpg"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\order\\order_21.jpg",
+      "PackagePath": "staticwebassets\\Images\\order\\order_21.jpg"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\order\\order_22.jpg",
+      "PackagePath": "staticwebassets\\Images\\order\\order_22.jpg"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\order\\order_9.jpg",
+      "PackagePath": "staticwebassets\\Images\\order\\order_9.jpg"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\product\\item_icon.png",
+      "PackagePath": "staticwebassets\\Images\\product\\item_icon.png"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\product\\product_19.jpg",
+      "PackagePath": "staticwebassets\\Images\\product\\product_19.jpg"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\product\\product_21.jpg",
+      "PackagePath": "staticwebassets\\Images\\product\\product_21.jpg"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\product\\product_25.jpg",
+      "PackagePath": "staticwebassets\\Images\\product\\product_25.jpg"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\product\\product_26.jpg",
+      "PackagePath": "staticwebassets\\Images\\product\\product_26.jpg"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\product\\product_27.jpg",
+      "PackagePath": "staticwebassets\\Images\\product\\product_27.jpg"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\product\\product_28.jpg",
+      "PackagePath": "staticwebassets\\Images\\product\\product_28.jpg"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\product\\product_30.jpg",
+      "PackagePath": "staticwebassets\\Images\\product\\product_30.jpg"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\product\\product_31.jpg",
+      "PackagePath": "staticwebassets\\Images\\product\\product_31.jpg"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\product\\product_32.jpg",
+      "PackagePath": "staticwebassets\\Images\\product\\product_32.jpg"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\product\\product_33.jpg",
+      "PackagePath": "staticwebassets\\Images\\product\\product_33.jpg"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\product\\product_34.jpg",
+      "PackagePath": "staticwebassets\\Images\\product\\product_34.jpg"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\product\\product_35.jpg",
+      "PackagePath": "staticwebassets\\Images\\product\\product_35.jpg"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\profile\\droid_profile.png",
+      "PackagePath": "staticwebassets\\Images\\profile\\droid_profile.png"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\profile\\profile_12.jpg",
+      "PackagePath": "staticwebassets\\Images\\profile\\profile_12.jpg"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\profile\\profile_13.jpg",
+      "PackagePath": "staticwebassets\\Images\\profile\\profile_13.jpg"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\report\\item_icon.png",
+      "PackagePath": "staticwebassets\\Images\\report\\item_icon.png"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\report\\report_0.jpg",
+      "PackagePath": "staticwebassets\\Images\\report\\report_0.jpg"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\report\\report_13.jpg",
+      "PackagePath": "staticwebassets\\Images\\report\\report_13.jpg"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\report\\report_14.jpg",
+      "PackagePath": "staticwebassets\\Images\\report\\report_14.jpg"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\report\\report_15.jpg",
+      "PackagePath": "staticwebassets\\Images\\report\\report_15.jpg"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\report\\report_16.jpg",
+      "PackagePath": "staticwebassets\\Images\\report\\report_16.jpg"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\report\\report_3.jpg",
+      "PackagePath": "staticwebassets\\Images\\report\\report_3.jpg"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\test\\droid_profile.png",
+      "PackagePath": "staticwebassets\\Images\\test\\droid_profile.png"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\Images\\test\\item_icon.png",
+      "PackagePath": "staticwebassets\\Images\\test\\item_icon.png"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\mastersManager.html",
+      "PackagePath": "staticwebassets\\mastersManager.html"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\reportsManager.html",
+      "PackagePath": "staticwebassets\\reportsManager.html"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\shopManager.html",
+      "PackagePath": "staticwebassets\\shopManager.html"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\transshipmentPoint.html",
+      "PackagePath": "staticwebassets\\transshipmentPoint.html"
+    },
+    {
+      "Id": "D:\\VSProjects\\WebApplication1\\WebApplication1\\wwwroot\\usersManager.html",
+      "PackagePath": "staticwebassets\\usersManager.html"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.WebApplication1.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.WebApplication1.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.build.WebApplication1.props",
+      "PackagePath": "build\\WebApplication1.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildMultiTargeting.WebApplication1.props",
+      "PackagePath": "buildMultiTargeting\\WebApplication1.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildTransitive.WebApplication1.props",
+      "PackagePath": "buildTransitive\\WebApplication1.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

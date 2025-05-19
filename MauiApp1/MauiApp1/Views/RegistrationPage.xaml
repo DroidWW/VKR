@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Views.RegistrationPage">
+    <Grid>
+        <ScrollView>
+            <VerticalStackLayout Padding="40" Margin="0,50,0,0" Spacing="10">
+                <Label Text="Регистрация" FontSize="24" FontAttributes="Bold" TextColor="Black" Margin="5,0,0,10" />
+
+                <Label Text="Логин" FontSize="16" Margin="5,0,0,0" TextColor="#92D36E"/>
+                <Entry x:Name="loginName" Placeholder="Введите почту или номер телефона" PlaceholderColor="Gray" FontSize="16" Margin="0,0,0,10"/>
+
+                <Label Text="Пароль" FontSize="16" Margin="5,0,0,0" TextColor="#92D36E"/>
+                <Entry x:Name="passwordName" Placeholder="Введите пароль" PlaceholderColor="Gray" FontSize="16" IsPassword="True" Margin="0,0,0,10"/>
+
+                <Label Text="Повторите пароль" FontSize="16" Margin="5,0,0,0" TextColor="#92D36E"/>
+                <Entry x:Name="passwordNameAgain" Placeholder="Введите пароль" PlaceholderColor="Gray" FontSize="16" IsPassword="True" Margin="0,0,0,10"/>
+
+                <Label Text="Фамилия" FontSize="16" Margin="5,0,0,0" TextColor="#92D36E"/>
+                <Entry x:Name="secondName" Placeholder="Введите фамилию" PlaceholderColor="Gray" FontSize="16" Margin="0,0,0,10"/>
+
+                <Label Text="Имя" FontSize="16" Margin="5,0,0,0" TextColor="#92D36E"/>
+                <Entry x:Name="firstName" Placeholder="Введите имя" PlaceholderColor="Gray" FontSize="16" Margin="0,0,0,10"/>
+
+                <Label Text="Отчество" FontSize="16" Margin="5,0,0,0" TextColor="#92D36E"/>
+                <Entry x:Name="thirdName" Placeholder="Введите отчество" PlaceholderColor="Gray" FontSize="16" Margin="0,0,0,10"/>
+
+                <HorizontalStackLayout Margin="0,0,0,20" Spacing="10">
+                    <Switch x:Name="agreementSwitch" OnColor="Green" ThumbColor="White"/>
+                    <Label WidthRequest="250">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Я согласен с " TextColor="Black" />
+                                <Span Text="Условиями предоставления услуг" TextColor="#92D36E"/>
+                                <Span Text=" и " TextColor="Black"/>
+                                <Span Text="Политикой конфидециальности" TextColor="#92D36E"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </HorizontalStackLayout>
+
+                <Button Text="Продолжить" 
+                        x:Name="ButtonForContinue"
+                        Clicked="ContinuePage" 
+                        HeightRequest="50" 
+                        WidthRequest="300" 
+                        HorizontalOptions="Center" 
+                        BackgroundColor="#92D36E" 
+                        TextColor="White" 
+                        FontSize="18"/>
+
+                <Grid ColumnDefinitions="200,90">
+                    <Label HorizontalOptions="End" Text="Уже есть аккаунт?" TextColor="Gray" Grid.Column="0"/>
+                    <Label Text="Войти" TextColor="#92D36E" HorizontalOptions="Start" Grid.Column="1">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="BackToMainPage"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Grid>
+            </VerticalStackLayout>
+        </ScrollView>
+        
+        <BoxView x:Name="overlay"
+                 Color="Black"
+                 Opacity="0.5"
+                 IsVisible="False"
+                 ZIndex="99"/>
+        <ActivityIndicator x:Name="activityIndicator" 
+                           Color="#92D36E" 
+                           HorizontalOptions="Center" 
+                           VerticalOptions="Center" 
+                           IsVisible="False" 
+                           IsRunning="False"
+                           ZIndex="100"/>
+    </Grid>
+</ContentPage>
